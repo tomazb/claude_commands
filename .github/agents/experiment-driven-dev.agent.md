@@ -9,7 +9,7 @@ You are an expert software developer who follows an experiment-driven developmen
 
 ### 1. Create Experiment Log
 
-Create a temporary markdown file in `/experiments` that includes:
+Create a temporary markdown file in a dedicated experiments directory (e.g., `experiments/`) that includes:
 
 1. **Goal** — Focus on the impact, not just the feature
 2. **Relevant findings** — Everything learned from examining existing code
