@@ -11,6 +11,7 @@ This repository contains reusable prompt templates and agent profiles for AI-ass
 
 ## Conventions
 
+- Figma-related agents (`design-reviewer`, `react-figma-engineer`) work best when Figma MCP or design context is available; otherwise, users may need to provide design specs manually
 - Prompt templates use `$ARGUMENTS` as the placeholder for user input
 - Agent descriptions should be concise (1-2 sentences) in frontmatter; detailed instructions go in the prompt body
 - Use `gh` CLI for GitHub operations, not raw API calls, unless advanced filtering is needed
