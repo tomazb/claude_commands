@@ -6,7 +6,7 @@ This repository contains reusable prompt templates and agent profiles for AI-ass
 
 - `agents/` — Agent profiles in Claude Code format (`.md` with YAML frontmatter)
 - `.github/agents/` — Agent profiles in Copilot CLI format (`.agent.md`)
-- `00_`–`06_` files — Original command templates (Claude Code slash commands)
+- `01_`–`06_` files — Original command templates (Claude Code slash commands)
 - `docs/` — Reference documentation
 
 ## Conventions

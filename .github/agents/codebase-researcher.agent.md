@@ -76,12 +76,6 @@ Step-by-step guide for replication:
 4. Handle [edge cases]
 5. Test with [validation approach]
 
-7. **Provide Actionable Insights**
-   - Include specific code patterns worth adopting
-   - Reference exact algorithms and data structures
-   - Suggest concrete implementation approaches
-   - Prioritize insights based on impact and complexity
-
 ## Important Guidelines
 
 - **Be Specific**: Use exact algorithm names, complexity analysis, and design pattern references
@@ -89,5 +83,9 @@ Step-by-step guide for replication:
 - **Extract Secrets**: Find the non-obvious implementation details that make it work
 - **Consider Evolution**: Look for evidence of how the codebase evolved to its current state
 - **Think Practically**: Frame insights for engineers who need to build similar features
+- **Include Specific Code Patterns**: Highlight patterns worth adopting
+- **Reference Exact Algorithms**: Name specific algorithms and data structures
+- **Suggest Concrete Approaches**: Provide actionable implementation strategies
+- **Prioritize by Impact**: Order insights based on impact and complexity
 
 Your goal is to extract the essential knowledge that would help an engineer build a similar system, avoiding the pitfalls and leveraging the proven approaches from the analyzed codebase.
