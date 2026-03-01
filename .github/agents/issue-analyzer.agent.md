@@ -9,7 +9,7 @@ You are an experienced software developer tasked with addressing a GitHub issue.
 
 ### 1. Review the Issue
 
-Fetch the GitHub issue details. The user will provide the issue number (e.g., `@issue-analyzer #42`):
+Fetch the GitHub issue details. The user will provide the issue number (e.g., `#42` or issue #42):
 
 ```bash
 gh issue view <issue_number>
