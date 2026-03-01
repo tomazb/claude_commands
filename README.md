@@ -1,146 +1,117 @@
-# Claude Commands
+# AI Dev Commands
 
-Prompt templates for Claude Code to handle common software development tasks.
+Reusable prompt templates and agent profiles for AI-assisted software development. Works with both **GitHub Copilot CLI** and **Claude Code**.
 
-## Overview
+## Quick Start
 
-This repository contains prompts that help Claude Code work through software engineering tasks systematically. Each template provides a structured approach for specific development scenarios.
+### GitHub Copilot CLI
 
-## Available Commands
-
-### 1. Experiment-Driven Development (`01_experiment_driven_development.md`)
-
-A learn-from-failure approach to implementing code changes. Tracks attempts and learnings through an iterative process.
-
-**Use for:**
-- Complex features requiring exploration
-- Bug fixes with unclear root causes
-- Performance optimizations
-- Experimental refactoring
-
-**Structure:**
-- Goal setting with impact focus
-- Code analysis and planning
-- Implementation tracking with success/failure logs
-- Iterative improvement cycles
-
-### 2. Generate Codebase Context (`02_generate_codebase_context.md`)
-
-Creates comprehensive documentation files (like `llms.txt`) that provide complete context about a codebase.
-
-**Use for:**
-- Onboarding documentation
-- Codebase reference materials
-- Pre-refactoring analysis
-- AI assistant context
-
-**Output includes:**
-- File purposes and relationships
-- Function signatures with parameters
-- Architecture diagrams
-- Code conventions
-- Data formats
-
-### 3. Analyze GitHub Issue (`03_analyze_github_issue.md`)
-
-Analyzes GitHub issues and creates implementation plans before coding begins.
-
-**Use for:**
-- New issue assessment
-- Implementation planning
-- Stakeholder alignment
-- Risk evaluation
-
-**Process:**
-1. Review issue details
-2. Examine codebase
-3. Create feature branch
-4. Develop implementation plan
-5. Request approval
-
-### 4. Create GitHub Issue (`04_create_github_issue.md`)
-
-Creates well-structured GitHub issues with varying detail levels based on complexity.
-
-**Use for:**
-- Feature requests
-- Bug reports
-- Architecture proposals
-- Improvement suggestions
-
-**Detail levels:**
-- **MINIMAL**: Simple bugs or clear features
-- **MORE**: Standard issues with technical details
-- **A LOT**: Major features or architectural changes
-
-**Features:**
-- Repository convention research
-- Best practices integration
-- Stakeholder analysis
-- Proper formatting and cross-references
-
-### 5. Resolve PR Comments (`05_resolve_pr_comments.md`)
-
-Systematically addresses all PR feedback, comments, and requested changes.
-
-**Use for:**
-- Code review feedback
-- Multiple PR comments
-- Pre-merge cleanup
-- Review response management
-
-**Workflow:**
-1. Research - Find all comments and feedback
-2. Planning - Prioritize and track with TodoWrite
-3. Implementation - Address each item
-4. Verification - Test and validate changes
-
-**Features:**
-- Parallel processing for independent changes
-- Comment priority classification
-- GitHub API command examples
-- Resolution tracking
-
-## Usage
-
-Templates can be used as slash commands or copied directly:
+The `.github/agents/` directory contains agent profiles that Copilot CLI discovers automatically:
 
 ```bash
-# As slash command
-/research Create OAuth authentication feature
+# Launch Copilot CLI in this repo
+copilot
 
-# Or copy template content and replace placeholders
+# Browse available agents
+/agent
+
+# Or reference an agent directly in your prompt
+Use the issue-analyzer agent to plan work for issue #42
 ```
 
-## Template Structure
+Available agents via `/agent`:
 
-Most templates include:
-- Clear objectives
-- Step-by-step processes
-- Decision criteria
-- Output formats
-- Usage examples
+| Agent | What it does |
+|-------|-------------|
+| `codebase-researcher` | Reverse-engineers codebases to extract architecture patterns |
+| `design-reviewer` | Verifies UI implementations match Figma designs |
+| `design-iterator` | Iteratively refines UI components through screenshot-analyze-implement cycles |
+| `prompt-engineer` | Creates and optimizes system prompts for AI agents |
+| `react-figma-engineer` | Translates Figma designs into React/Tailwind components |
+| `experiment-driven-dev` | Implements changes through iterative experiment logs |
+| `codebase-context-generator` | Generates `llms.txt` documentation files for a codebase |
+| `issue-analyzer` | Analyzes GitHub issues and creates implementation plans |
+| `issue-creator` | Creates well-structured GitHub issues at flexible detail levels |
+| `pr-comment-resolver` | Systematically resolves all PR review comments |
+| `marketing-writer` | Crafts marketing content from actual code changes |
+
+### Claude Code
+
+The `agents/` directory and numbered command files (`01_`–`06_`) use Claude Code's format:
+
+```bash
+# Use as slash commands (copy to .claude/commands/)
+cp 01_experiment_driven_development.md .claude/commands/experiment.md
+
+# Or reference agents directly
+# (agents/ directory is auto-discovered by Claude Code)
+```
+
+## Repository Structure
+
+```
+├── .github/
+│   ├── copilot-instructions.md          # Repo-wide Copilot CLI instructions
+│   └── agents/                          # Copilot CLI agent profiles (.agent.md)
+├── agents/                              # Claude Code agent profiles
+├── docs/
+│   └── claude-capabilities.md           # Claude Code capabilities reference
+├── 01_experiment_driven_development.md  # Command: iterative development
+├── 02_generate_codebase_context.md      # Command: generate llms.txt
+├── 03_analyze_github_issue.md           # Command: plan issue implementation
+├── 04_create_github_issue.md            # Command: create structured issues
+├── 05_resolve_pr_comments.md            # Command: resolve PR feedback
+└── 06_help_me_market.md                 # Command: marketing content
+```
+
+## Commands Reference
+
+| # | Command | Use for |
+|---|---------|---------|
+| 01 | Experiment-Driven Development | Complex features, unclear bugs, performance work |
+| 02 | Generate Codebase Context | Onboarding docs, AI context files, pre-refactoring analysis |
+| 03 | Analyze GitHub Issue | Issue assessment, implementation planning |
+| 04 | Create GitHub Issue | Feature requests, bug reports, architecture proposals |
+| 05 | Resolve PR Comments | Code review feedback, pre-merge cleanup |
+| 06 | Marketing Writer | Product updates, feature announcements |
+
+## Agent Profiles
+
+The five agents in `agents/` (Claude Code) have corresponding ports in `.github/agents/` (Copilot CLI). Six additional agents — converted from the numbered command files — are available only in Copilot CLI format.
+
+| Agent | Claude Code | Copilot CLI | Specialty |
+|-------|:-----------:|:-----------:|-----------|
+| Codebase Researcher | ✅ | ✅ | Architecture analysis and reverse-engineering |
+| Design Implementation Reviewer | ✅ | ✅ `design-reviewer` | Figma-to-code accuracy verification |
+| Design Iterator | ✅ | ✅ | Progressive UI refinement |
+| Prompt Engineer | ✅ | ✅ | System prompt creation and optimization |
+| React Figma UI Engineer | ✅ | ✅ `react-figma-engineer` | Figma-to-React component implementation |
+| Experiment-Driven Dev | — | ✅ | Iterative experiment-log development |
+| Codebase Context Generator | — | ✅ | llms.txt documentation generation |
+| Issue Analyzer | — | ✅ | GitHub issue analysis and planning |
+| Issue Creator | — | ✅ | Structured GitHub issue authoring |
+| PR Comment Resolver | — | ✅ | PR review feedback resolution |
+| Marketing Writer | — | ✅ | Product feature marketing content |
 
 ## Best Practices
 
-1. Select templates based on task type and complexity
+1. Select the right agent or command for your task type
 2. Provide complete context when using templates
 3. Follow all phases in multi-step workflows
-4. Use TodoWrite for complex task tracking
-5. Run tests and linting after changes
+4. Run tests and linting after changes
+5. Use the research → plan → implement → verify pattern
 
 ## Contributing
 
 When adding templates:
-- Focus on specific use cases
-- Include clear documentation
-- Provide examples
-- Test thoroughly
-- Keep formatting consistent
+- Add both Copilot CLI (`.github/agents/*.agent.md`) and Claude Code (`agents/*.md`) versions
+- Keep descriptions concise in frontmatter; detailed instructions go in the prompt body
+- Use `$ARGUMENTS` as the placeholder for user input in command files
+- Test with the target AI assistant before submitting
 
 ## Customization
 
 - Adapt templates to match team conventions
-- Save project-specific versions in `.claude/commands/`
-- Combine templates for complex workflows
-- Share modifications with your team
+- For Copilot CLI: copy `.github/agents/` into your project's `.github/agents/`
+- For Claude Code: copy `agents/` and command files into `.claude/commands/`
+- Combine agents for complex workflows
